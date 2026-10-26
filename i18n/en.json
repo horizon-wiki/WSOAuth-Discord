@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [ "Hugin" ]
+	},
+	"wsoauth-discord-desc": "Log in with Discord through WSOAuth, binding each account to its Discord ID.",
+	"wsoauth-discord-login-button": "Log in with Discord",
+	"wsoauth-discord-cancelled": "Login was cancelled on Discord. Nothing was changed.",
+	"wsoauth-discord-bad-state": "This login didn't finish where it started: it began in another browser or app, took too long, or was used twice. Please open the wiki in your web browser and log in again.",
+	"wsoauth-discord-unreachable": "Discord couldn't be reached, or didn't accept the login. Please try again in a minute.",
+	"wsoauth-discord-failed": "Discord didn't confirm who you are. Please try logging in again.",
+	"wsoauth-discord-bad-name": "Your Discord username can't be used as a wiki account name. Please ask a wiki administrator for help."
+}

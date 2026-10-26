@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [ "Hugin" ]
+	},
+	"wsoauth-discord-desc": "{{desc|name=WSOAuth-Discord|url=https://github.com/horizon-wiki/WSOAuth-Discord}}",
+	"wsoauth-discord-login-button": "Label of the login button on Special:UserLogin.",
+	"wsoauth-discord-cancelled": "Shown when the user pressed Cancel on Discord's authorisation screen.",
+	"wsoauth-discord-bad-state": "Shown when the login's state check fails: the return came to a different browser or app session than the one that started it (common when Discord's app opens the link), an expired or reused login, or a forged link.",
+	"wsoauth-discord-unreachable": "Shown when the requests to Discord for a token and the user's identity fail: a timeout, an error reply, or a refused code.",
+	"wsoauth-discord-failed": "Shown when Discord's reply has no usable user ID or username, or the callback has no code.",
+	"wsoauth-discord-bad-name": "Shown when no valid, free wiki account name can be made from the Discord username."
+}

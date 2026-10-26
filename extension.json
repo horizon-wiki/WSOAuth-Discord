@@ -1,0 +1,26 @@
+{
+	"name": "WSOAuth-Discord",
+	"version": "1.0.0",
+	"author": [ "Hugin" ],
+	"url": "https://github.com/horizon-wiki/WSOAuth-Discord",
+	"descriptionmsg": "wsoauth-discord-desc",
+	"license-name": "MIT",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.43.0",
+		"extensions": {
+			"WSOAuth": ">= 9.0.0"
+		}
+	},
+	"AutoloadNamespaces": {
+		"WSOAuthDiscord\\": "src/"
+	},
+	"MessagesDirs": {
+		"WSOAuthDiscord": [ "i18n" ]
+	},
+	"Hooks": {
+		"WSOAuthGetAuthProviders": "WSOAuthDiscord\\Hooks::onWSOAuthGetAuthProviders",
+		"SpecialPageBeforeExecute": "WSOAuthDiscord\\Hooks::onSpecialPageBeforeExecute"
+	},
+	"manifest_version": 2
+}

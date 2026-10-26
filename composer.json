@@ -1,0 +1,20 @@
+{
+	"name": "horizon-wiki/wsoauth-discord",
+	"description": "A Discord provider for MediaWiki's WSOAuth extension, keyed on the Discord user ID.",
+	"license": "MIT",
+	"require": {
+		"league/oauth2-client": "^2.7"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^9.6"
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"WSOAuthDiscord\\": "src/",
+			"WSOAuthDiscord\\Tests\\": "tests/"
+		}
+	},
+	"scripts": {
+		"test": "phpunit"
+	}
+}
