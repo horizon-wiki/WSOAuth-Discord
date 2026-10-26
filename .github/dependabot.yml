@@ -1,0 +1,7 @@
+# Keeps the workflow's actions current, so CI doesn't quietly break when an action's runtime is retired.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
