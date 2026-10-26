@@ -44,7 +44,8 @@ class MediaWikiLookups implements NameLookup, MappingLookup, HandleLookup {
 			->from( 'user' )
 			->leftJoin( self::MAPPINGS, null, 'wsoauth_user = user_id' )
 			->where( [ 'user_real_name' => $username . '#0', 'wsoauth_user' => null ] )
-			->orderBy( 'user_touched', 'DESC' )
+			// Not user_touched: any bulk change to the accounts resets it, so it says nothing about who was active.
+			->orderBy( [ 'user_editcount', 'user_id' ], 'DESC' )
 			->caller( __METHOD__ )
 			->fetchFieldValues();
 		// The 2023 ghost accounts were stored under names MediaWiki never looks up; skip them.

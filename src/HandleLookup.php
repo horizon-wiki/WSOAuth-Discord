@@ -10,7 +10,7 @@ interface HandleLookup {
 
 	/**
 	 * The name of the unbound account whose stored handle is exactly this username, or null. If several have it, the
-	 * one MediaWiki can log into, most recently active first.
+	 * one MediaWiki can log into with the most edits, then the newest.
 	 */
 	public function accountForHandle( string $username ): ?string;
 
