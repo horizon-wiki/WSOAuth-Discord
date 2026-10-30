@@ -2,6 +2,7 @@
 
 namespace WSOAuthDiscord;
 
+use MediaWiki\Output\OutputPage;
 use MediaWiki\SpecialPage\SpecialPage;
 use WSOAuth\WSOAuth;
 
@@ -31,5 +32,29 @@ class Hooks {
 		$session = $special->getRequest()->getSession();
 		$session->remove( WSOAuth::WSOAUTH_OAUTH_REQUEST_KEY_SESSION_KEY );
 		$session->remove( WSOAuth::WSOAUTH_OAUTH_REQUEST_SECRET_SESSION_KEY );
+	}
+
+	/**
+	 * Adds the same-window login script for logged-out visitors when $wgWSOAuthDiscordSameWindowLogin is on.
+	 *
+	 * @param OutputPage $out
+	 * @param \Skin $skin
+	 */
+	public static function onBeforePageDisplay( $out, $skin ): void {
+		if ( self::wantsSameWindowLogin(
+			(bool)$out->getConfig()->get( 'WSOAuthDiscordSameWindowLogin' ),
+			$out->getUser()->isRegistered()
+		) ) {
+			$out->addModules( 'ext.wsoauthDiscord.sameWindow' );
+		}
+	}
+
+	/**
+	 * @param bool $enabled $wgWSOAuthDiscordSameWindowLogin
+	 * @param bool $isRegistered whether the visitor is logged in
+	 * @return bool
+	 */
+	public static function wantsSameWindowLogin( bool $enabled, bool $isRegistered ): bool {
+		return $enabled && !$isRegistered;
 	}
 }

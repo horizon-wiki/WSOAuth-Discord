@@ -1,6 +1,6 @@
 {
 	"name": "WSOAuth-Discord",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"author": [ "Hugin" ],
 	"url": "https://github.com/horizon-wiki/WSOAuth-Discord",
 	"descriptionmsg": "wsoauth-discord-desc",
@@ -18,9 +18,36 @@
 	"MessagesDirs": {
 		"WSOAuthDiscord": [ "i18n" ]
 	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "modules",
+		"remoteExtPath": "WSOAuth-Discord/modules"
+	},
+	"ResourceModules": {
+		"ext.wsoauthDiscord.sameWindow": {
+			"packageFiles": [
+				"ext.wsoauthDiscord.sameWindow.js",
+				{
+					"name": "config.json",
+					"config": [ "WSOAuthDiscordLoginButtonSelector" ]
+				}
+			],
+			"dependencies": [ "mediawiki.util" ]
+		}
+	},
 	"Hooks": {
 		"WSOAuthGetAuthProviders": "WSOAuthDiscord\\Hooks::onWSOAuthGetAuthProviders",
-		"SpecialPageBeforeExecute": "WSOAuthDiscord\\Hooks::onSpecialPageBeforeExecute"
+		"SpecialPageBeforeExecute": "WSOAuthDiscord\\Hooks::onSpecialPageBeforeExecute",
+		"BeforePageDisplay": "WSOAuthDiscord\\Hooks::onBeforePageDisplay"
+	},
+	"config": {
+		"WSOAuthDiscordSameWindowLogin": {
+			"value": false,
+			"description": "Log in from the current page in the same window, coming back to it afterwards, instead of through Special:UserLogin's form."
+		},
+		"WSOAuthDiscordLoginButtonSelector": {
+			"value": "",
+			"description": "A CSS selector for a login button in the skin that should also log in this way; empty for none."
+		}
 	},
 	"manifest_version": 2
 }

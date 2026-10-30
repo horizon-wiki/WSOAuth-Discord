@@ -25,3 +25,14 @@ jobs:
       - name: Lint every PHP file
         run: find src tests -name '*.php' -print0 | xargs -0 -n1 php -l
       - run: composer test
+
+  javascript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Check the module's syntax
+        run: node --check modules/ext.wsoauthDiscord.sameWindow.js
+      - run: node --test 'tests/js/*.test.mjs'

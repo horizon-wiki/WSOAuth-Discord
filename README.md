@@ -38,6 +38,22 @@ $wgPluggableAuth_Config['discord'] = [
 In the Discord developer portal, add `https://<your wiki>/Special:PluggableAuthLogin` as a redirect for the
 application.
 
+## Logging in from the current page
+
+By default a login goes through `Special:UserLogin`. With
+
+```php
+$wgWSOAuthDiscordSameWindowLogin = true;
+$wgWSOAuthDiscordLoginButtonSelector = '#discord-login'; // optional
+```
+
+a logged-out visitor who clicks a "Log in" link, or the skin button the selector names, goes straight to Discord in the
+same window and comes back to the page they were on, an edit form included (`returnto` and `returntoquery`). It needs
+PluggableAuth's single-button login, where `Special:UserLogin` sends the visitor on by itself. Before leaving, the
+script starts a session with an API login-token request, so a server that refuses login URLs from visitors with no
+session cookie (a common bot defense) lets the request through; if that fails, the visitor still logs in and returns
+to the page, without its query.
+
 ## Account names
 
 A new account is named from the Discord username, with `_` turned into `-` and its first letter capitalised:
@@ -59,6 +75,7 @@ name. This provider only allows that when the account isn't someone else's:
 ```
 composer install
 composer test
+node --test 'tests/js/*.test.mjs'
 ```
 
 ## Credits
